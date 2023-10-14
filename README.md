@@ -1,6 +1,11 @@
-## Send Daily Emails using API's calls
+## Automate Daily Emails using API's call data in scheduled time
 
-#### Create the virtual environment for PyQt5
+### Technologies used
+1. PyQt5 to create the GUI
+2. Python for calling API's
+
+
+### Create the virtual environment for PyQt5
 
 First create a virtual environment using the below command in the terminal.
 
@@ -15,13 +20,13 @@ Then install PyQt5 library using pip command.
 >pip install PyQt5
 
 
-#### Get details from the weather api
+### Get details from the weather api
 
 1. Go to https://openweathermap.org/api and create an account to get the weather api. 
 2. I choose **5 Day / 3 Hour Forecast** option and subscribed for free get api key.  
 
 
-#### Accessing google calender api key
+### Accessing google calender api key
 
 1. First go to the this link. https://developers.google.com/calendar/api/quickstart/python
 2. Then create a google cloud project - https://developers.google.com/workspace/guides/create-project
