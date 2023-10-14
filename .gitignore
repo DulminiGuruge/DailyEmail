@@ -1,1 +1,4 @@
 venv
+api_keys.txt
+credentials.json
+token.json
