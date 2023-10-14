@@ -1,4 +1,4 @@
-## PyQt5
+## Send Daily Emails using API's calls
 
 #### Create the virtual environment for PyQt5
 
