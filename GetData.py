@@ -14,10 +14,12 @@ from googleapiclient.errors import HttpError
 
 
 class GetAPIData():
-    calender_id = ''
-    open_weather_id = ''
-    # If modifying these scopes, delete the file token.json.
-    SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+    def __init__(self):
+
+        self.calender_id = ''
+        self.open_weather_id = ''
+        # If modifying these scopes, delete the file token.json.
+        self.SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
   
     
@@ -114,11 +116,13 @@ class GetAPIData():
         except HttpError as error:
             print('An error occurred: %s' % error)
 
-
+"""
+Test the created functions
+"""
 #get the api keys
 data_class=GetAPIData()
 data_class.read_api_keys()
-#data_class.get_weather_forecast()
+data_class.get_weather_forecast()
 data_class.get_google_calender_api()
 
 
