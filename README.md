@@ -1,6 +1,6 @@
-## Automate Daily Emails using API calls at the scheduled time
+## Automate Daily Emails
 
-This PyQt5-based desktop application provides users with the ability to automate the sending of daily emails to a pre-selected list at a scheduled time. The application is equipped with functionality that includes daily weather reports and the user's daily events, providing a comprehensive and convenient method for staying up-to-date.
+This PyQt5-based desktop application allows users to automate the sending of daily emails to a pre-selected list at a scheduled time. The application sends daily weather reports and the user's daily events extracted using API calls, providing a comprehensive and convenient method for staying up-to-date.
 
 ### Technologies used
 1. PyQt5 to create the GUI
