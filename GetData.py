@@ -14,6 +14,10 @@ from googleapiclient.errors import HttpError
 
 
 class GetAPIData():
+    
+    """
+    Initialize the variables
+    """
     def __init__(self):
 
         self.calender_id = ''
@@ -37,14 +41,15 @@ class GetAPIData():
                     self.calender_id= str(data[0])
                 if str(data[1]).strip()=="open_weather_api":
                     self.open_weather_id= str(data[0])    
-        #get_weather_forecast(coords={'lat': 52.132854, 'lon': -106.631401} )
+        
     """
         Retieve daily weather forecast using the openweather api for the 
         loangitute and latitute of Saskatoon as default.
     """
     def get_weather_forecast(self):
-        try: # retrieve forecast for specified coordinates
-            coords={'lat': 52.132854, 'lon': -106.631401}
+        try: 
+            # retrieve forecast for specified coordinates 
+            coords={'lat': 52.132854, 'lon': -106.631401}#coordinates of Saskatoon
             url = f'https://api.openweathermap.org/data/2.5/forecast?lat={coords["lat"]}&lon={coords["lon"]}&appid={self.open_weather_id}&units=metric'
             data = json.load(request.urlopen(url))
             

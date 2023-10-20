@@ -1,5 +1,5 @@
 """
-Interface for Daily Eamil list
+Interface for Daily Email list
 """
 
 import sys
@@ -66,46 +66,39 @@ class PyQtLayout(QWidget):
         self.lbl_timer.adjustSize()
     
         #edit time
-        self.timer = QTimeEdit()
+        self.time_edit = QTimeEdit()
 
         #hbox for the timer
         self.hbox_timer= QHBoxLayout()
         self.hbox_timer.addWidget(self.lbl_timer)
-        self.hbox_timer.addWidget(self.timer)
+        self.hbox_timer.addWidget(self.time_edit)
 
         #content
-        self.lbl_timer = QLabel() 
-        self.lbl_timer.setText("Select Content")
-        self.lbl_timer.adjustSize()
+        # self.lbl_timer = QLabel() 
+        # self.lbl_timer.setText("Select Content")
+        # self.lbl_timer.adjustSize()
 
-        self.check_1 = QCheckBox()
-        self.check_1.setText("Option1")
+        # self.check_1 = QCheckBox()
+        # self.check_1.setText("Weather Forecast")
 
-        self.check_2 = QCheckBox()
-        self.check_2.setText("Option2")
-
-        self.check_3 = QCheckBox()
-        self.check_3.setText("Option3")
-
-        self.check_4 = QCheckBox()
-        self.check_4.setText("Option4")
-
+        # self.check_2 = QCheckBox()
+        # self.check_2.setText("Daily plan")
 
         #vbox to add text and the button
-        self.vbox_checkbox1 = QVBoxLayout()
-        self.vbox_checkbox1.addWidget(self.check_1)
-        self.vbox_checkbox1.addWidget(self.check_2)
+        # self.vbox_checkbox1 = QVBoxLayout()
+        # self.vbox_checkbox1.addWidget(self.check_1)
+        # self.vbox_checkbox1.addWidget(self.check_2)
 
-        #vbox to add text and the button
-        self.vbox_checkbox2 = QVBoxLayout()
-        self.vbox_checkbox2.addWidget(self.check_3)
-        self.vbox_checkbox2.addWidget(self.check_4)
+        # #vbox to add text and the button
+        # self.vbox_checkbox2 = QVBoxLayout()
+        # self.vbox_checkbox2.addWidget(self.check_3)
+        # self.vbox_checkbox2.addWidget(self.check_4)
 
         #hbox for the timer
-        self.hbox_checkbox= QHBoxLayout()
-        self.hbox_checkbox.addWidget(self.lbl_timer)
-        self.hbox_checkbox.addLayout(self.vbox_checkbox1)
-        self.hbox_checkbox.addLayout(self.vbox_checkbox2)
+        # self.hbox_checkbox= QHBoxLayout()
+        # self.hbox_checkbox.addWidget(self.lbl_timer)
+        # self.hbox_checkbox.addLayout(self.check_1)
+        # self.hbox_checkbox.addLayout(self.check_2)
 
 
         #sender
@@ -129,6 +122,7 @@ class PyQtLayout(QWidget):
 
         #buttons to update details
         self.btn_settings = QPushButton('Update settings')
+        self.btn_settings.clicked(self.update_settings)
     
         self.btn_manual = QPushButton('Send Manually')
 
@@ -142,7 +136,7 @@ class PyQtLayout(QWidget):
         self.vbox_main.addWidget(self.lbl_name)
         self.vbox_main.addLayout(self.hbox_receipients)
         self.vbox_main.addLayout(self.hbox_timer)
-        self.vbox_main.addLayout(self.hbox_checkbox)
+        #self.vbox_main.addLayout(self.hbox_checkbox)
         self.vbox_main.addLayout(self.hbox_sender)
         self.vbox_main.addLayout(self.hbox_update_details)   
         
@@ -166,19 +160,37 @@ class PyQtLayout(QWidget):
     Select a text from QTextEdit and delete the selected text when 
     a button is clicked
     """
-    def delete_selected_email(self):
-        selected_text = self.txt_email_list.textCursor()
-        selected_text.removeSelectedText()
+    # def delete_selected_email(self):
+    #     selected_text = self.txt_email_list.textCursor()
+    #     selected_text.removeSelectedText()
 
-        
-    def delete_selected_text(self):
-        cursor = self.text_edit.textCursor()
+    def delete_selected_email(self):
+        cursor = self.txt_email_list.textCursor()
         selected_text = cursor.selectedText()
-        current_text = self.text_edit.toPlainText()
+        current_text = self.txt_email_list.toPlainText()
 
         if selected_text:
-            updated_text = current_text.replace(selected_text, "")
-            self.text_edit.setPlainText(updated_text)
+            selected_text_index = current_text.index(selected_text)
+            selected_text_length = selected_text_index + len(selected_text)
+            
+            updated_text = current_text[0:selected_text_index].rstrip()+"\n"+current_text[selected_text_length:].lstrip()
+            print(current_text[0:selected_text_index])
+            print(current_text[selected_text_length:])
+            #updated_text = current_text.replace(selected_text, "").strip()
+            self.txt_email_list.setPlainText(updated_text)
+
+    """
+     Update settings button click
+    """       
+    def update_settings(self):
+        # get the sceduled time selected by the user
+        scheduled_time = self.time_edit.time()
+        set_time = (str(scheduled_time.toPyTime()))
+
+        #get the selected details to include in the email
+        send_weather_forecast = self.check_1.isChecked()
+        send_daily_plan = self.check_2.isChecked()
+
 
 def main():
     app = QApplication(sys.argv)
