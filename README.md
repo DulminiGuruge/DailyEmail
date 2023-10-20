@@ -1,4 +1,4 @@
-## Automate Daily Emails
+## Automate Daily Emails in Python
 
 This PyQt5-based desktop application allows users to automate the sending of daily emails to a pre-selected list at a scheduled time. The application sends daily weather reports and the user's daily events extracted using API calls, providing a comprehensive and convenient method for staying up-to-date.
 
