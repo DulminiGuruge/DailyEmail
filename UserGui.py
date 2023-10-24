@@ -125,7 +125,7 @@ class PyQtLayout(QWidget):
 
         #buttons to update details
         self.btn_settings = QPushButton('Update settings')
-        self.btn_settings.clicked(self.update_settings)
+        self.btn_settings.clicked.connect(self.update_settings)
     
         self.btn_manual = QPushButton('Send Manually')
 
@@ -189,6 +189,7 @@ class PyQtLayout(QWidget):
         # get the sceduled time selected by the user
         scheduled_time = self.time_edit.time()
         set_time = (str(scheduled_time.toPyTime()))
+        print(set_time)
 
         #get the selected details to include in the email
         #send_weather_forecast = self.check_1.isChecked()
@@ -196,17 +197,21 @@ class PyQtLayout(QWidget):
 
         #get the username and password
         username = self.txt_senderemail.text()
+        print(username)
         #get the e
         password = self.txt_password.text()
         encode_password = base64.b64encode(password.encode("utf-8"))
+        print(encode_password)
 
         #create a dictonery to store data
         configs = {}
 
         # write to json
-        configs["username"]=username
-        configs["password"]=encode_password
+        configs["username"] = username
+        configs["password"] = encode_password
         configs["time"]=set_time
+        print(configs)
+        
 
 
 
