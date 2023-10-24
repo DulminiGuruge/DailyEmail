@@ -46,3 +46,11 @@ Then, install the PyQt5 library using the pip command.
 Sending emails with HTML
 
 I refered https://realpython.com/python-send-email/ to learn about this.
+
+### Encrypt and Decrypt files in Python
+
+For the purpose ofstoring sensitive in formation I used cryptography to encrypt the files in Python.
+
+First install cryptography library using the below command.
+%pip3 install cryptography
+
