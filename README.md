@@ -42,3 +42,7 @@ Then, install the PyQt5 library using the pip command.
 10. Go to the OAuth consent screen and add your email as the test user using the add users button.
 11. Install the Google client library for Python. pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 12. Now use the code in Python quick start for Calender API.
+
+Sending emails with HTML
+
+I refered https://realpython.com/python-send-email/ to learn about this.
