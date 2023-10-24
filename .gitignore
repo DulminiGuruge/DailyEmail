@@ -2,4 +2,5 @@ venv
 api_keys.txt
 credentials.json
 token.json
-configs.json
+configs.txt
+key.key

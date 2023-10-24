@@ -198,7 +198,7 @@ class PyQtLayout(QWidget):
         #get the username and password
         username = self.txt_senderemail.text()
         
-        #get the e
+        #get the password
         password = self.txt_password.text()
         encode_password = base64.b64encode(password.encode("utf-8"))
         print(type(encode_password))
@@ -208,14 +208,19 @@ class PyQtLayout(QWidget):
 
         # write to json
         configs["username"] = username
-        configs["password"] = str(encode_password)
-        configs["time"]=str(set_time)
+        configs["password"] = encode_password
+        configs["time"]=set_time
         
         #json serialization
         #json_object= json.dumps(configs,indent=4)
         #writing the config data to the cinfigs,json file
-        with open("configs.json","w")as out_file:
-            json.dump(configs,out_file)
+        config_data = open("configs.txt","w")
+        for title,val in configs.items():
+            config_data.write("{} : {}".format(title,val)+"\n")
+            
+
+        #with open("configs.json","w")as out_file:
+            #json.dump(configs,out_file)
 
 
         

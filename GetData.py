@@ -128,6 +128,6 @@ Test the created functions
 data_class=GetAPIData()
 data_class.read_api_keys()
 data_class.get_weather_forecast()
-data_class.get_google_calender_api()
+#data_class.get_google_calender_api()
 
 
