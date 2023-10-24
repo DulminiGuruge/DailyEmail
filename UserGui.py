@@ -7,7 +7,7 @@ from PyQt5 import QtWidgets
 # importing base64 modules for
 # encoding & decoding string
 import base64
-
+import json
 
 from PyQt5.QtWidgets import (QWidget, QPushButton, QApplication,QLabel,
                              QHBoxLayout, QVBoxLayout, QGridLayout,QTextEdit,QLineEdit,QTimeEdit,QCheckBox)
@@ -189,7 +189,7 @@ class PyQtLayout(QWidget):
         # get the sceduled time selected by the user
         scheduled_time = self.time_edit.time()
         set_time = (str(scheduled_time.toPyTime()))
-        print(set_time)
+        
 
         #get the selected details to include in the email
         #send_weather_forecast = self.check_1.isChecked()
@@ -197,20 +197,27 @@ class PyQtLayout(QWidget):
 
         #get the username and password
         username = self.txt_senderemail.text()
-        print(username)
+        
         #get the e
         password = self.txt_password.text()
         encode_password = base64.b64encode(password.encode("utf-8"))
-        print(encode_password)
+        print(type(encode_password))
 
         #create a dictonery to store data
         configs = {}
 
         # write to json
         configs["username"] = username
-        configs["password"] = encode_password
-        configs["time"]=set_time
-        print(configs)
+        configs["password"] = str(encode_password)
+        configs["time"]=str(set_time)
+        
+        #json serialization
+        #json_object= json.dumps(configs,indent=4)
+        #writing the config data to the cinfigs,json file
+        with open("configs.json","w")as out_file:
+            json.dump(configs,out_file)
+
+
         
 
 
