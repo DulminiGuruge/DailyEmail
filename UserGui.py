@@ -4,6 +4,9 @@ Interface for Daily Email list
 
 import sys
 from PyQt5 import QtWidgets
+# importing base64 modules for
+# encoding & decoding string
+import base64
 
 
 from PyQt5.QtWidgets import (QWidget, QPushButton, QApplication,QLabel,
@@ -188,8 +191,23 @@ class PyQtLayout(QWidget):
         set_time = (str(scheduled_time.toPyTime()))
 
         #get the selected details to include in the email
-        send_weather_forecast = self.check_1.isChecked()
-        send_daily_plan = self.check_2.isChecked()
+        #send_weather_forecast = self.check_1.isChecked()
+        #send_daily_plan = self.check_2.isChecked()
+
+        #get the username and password
+        username = self.txt_senderemail.text()
+        #get the e
+        password = self.txt_password.text()
+        encode_password = base64.b64encode(password.encode("utf-8"))
+
+        #create a dictonery to store data
+        configs = {}
+
+        # write to json
+        configs["username"]=username
+        configs["password"]=encode_password
+        configs["time"]=set_time
+
 
 
 def main():
