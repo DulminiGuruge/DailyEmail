@@ -65,15 +65,17 @@ def decrypt(filename, key):
     with open(filename, "wb") as file:
         file.write(decrypted_data)
   
-
+"""
+Uncommnet this section to test
+"""
 #Test the class
 # uncomment this if it's the first time you run the code, to generate the key
 #write_key()
 # load the key
-key = load_key()
+#key = load_key()
 # file name
-file = "configs.txt"
+#file = "configs.txt"
 # encrypt it
 #encrypt(file, key)
 # decrypt the file
-decrypt(file, key)
+#decrypt(file, key)
