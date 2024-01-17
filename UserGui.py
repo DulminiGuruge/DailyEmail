@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets
 # encoding & decoding string
 import base64
 import json
+import EncryptDecrypt as ed
 
 from PyQt5.QtWidgets import (QWidget, QPushButton, QApplication,QLabel,
                              QHBoxLayout, QVBoxLayout, QGridLayout,QTextEdit,QLineEdit,QTimeEdit,QCheckBox)
@@ -211,12 +212,19 @@ class PyQtLayout(QWidget):
         configs["password"] = encode_password
         configs["time"]=set_time
         
+        configs_filename = "configs.txt"
         #json serialization
         #json_object= json.dumps(configs,indent=4)
         #writing the config data to the cinfigs,json file
-        config_data = open("configs.txt","w")
+        config_data = open(configs_filename,"w")
         for title,val in configs.items():
             config_data.write("{} : {}".format(title,val)+"\n")
+
+        #Ecrypt the file after writing
+        key = ed.load_key()
+
+        # encrypt it
+        ed.encrypt(configs_filename, key)    
             
 
         #with open("configs.json","w")as out_file:
